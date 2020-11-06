@@ -4,9 +4,9 @@ IFS=$'\n\t'
 
 pm_yum_clean() {
     info "Removing unused packages."
-    yum -y autoremove > /dev/null 2>&1 || fatal "Failed to remove unused packages from yum.\nFailing command: ${F[C]}yum -y autoremove"
+    yum -y autoremove > /dev/null 2>&1 || fatal "Failed to remove unused packages from yum.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
     info "Cleaning up package cache."
-    yum -y clean all > /dev/null 2>&1 || fatal "Failed to cleanup cache from yum.\nFailing command: ${F[C]}yum -y clean all"
+    yum -y clean all > /dev/null 2>&1 || fatal "Failed to cleanup cache from yum.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
 }
 
 test_pm_yum_clean() {

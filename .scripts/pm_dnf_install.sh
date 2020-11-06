@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 pm_dnf_install() {
     info "Installing dependencies."
-    dnf -y install curl git grep newt sed > /dev/null 2>&1 || fatal "Failed to install dependencies from dnf.\nFailing command: ${F[C]}dnf -y install curl git grep newt sed"
+    dnf -y install curl git grep newt sed > /dev/null 2>&1 || fatal "Failed to install dependencies from dnf.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
 }
 
 test_pm_dnf_install() {

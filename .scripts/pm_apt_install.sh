@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 pm_apt_install() {
     info "Installing dependencies."
-    apt-get -y install apt-transport-https curl git grep sed whiptail > /dev/null 2>&1 || fatal "Failed to install dependencies from apt.\nFailing command: ${F[C]}apt-get -y install apt-transport-https curl git grep sed whiptail"
+    apt-get -y install apt-transport-https curl git grep sed whiptail > /dev/null 2>&1 || fatal "Failed to install dependencies from apt.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
 }
 
 test_pm_apt_install() {

@@ -41,16 +41,16 @@ docker_compose() {
     fi
     run_script 'install_docker'
     run_script 'install_compose'
-    cd "${SCRIPTPATH}/compose/" || fatal "Failed to change directory.\nFailing command: ${F[C]}cd \"${SCRIPTPATH}/compose/\""
-    eval docker-compose "${COMPOSECOMMAND}" || fatal "Docker Compose failed.\nFailing command: ${F[C]}eval docker-compose \"${COMPOSECOMMAND}\""
-    cd "${SCRIPTPATH}" || fatal "Failed to change directory.\nFailing command: ${F[C]}cd \"${SCRIPTPATH}\""
+    cd "${SCRIPTPATH}/compose/" || fatal "Failed to change directory.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
+    eval docker-compose "${COMPOSECOMMAND}" || fatal "Docker Compose failed.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
+    cd "${SCRIPTPATH}" || fatal "Failed to change directory.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
 }
 
 test_docker_compose() {
     cat "${SCRIPTPATH}/compose/.env"
     run_script 'yml_merge'
-    cd "${SCRIPTPATH}/compose/" || fatal "Failed to change directory.\nFailing command: ${F[C]}cd \"${SCRIPTPATH}/compose/\""
-    docker-compose config || fatal "Failed to validate ${SCRIPTPATH}/compose/docker-compose.yml file.\nFailing command: ${F[C]}docker-compose config"
-    cd "${SCRIPTPATH}" || fatal "Failed to change directory.\nFailing command: ${F[C]}cd \"${SCRIPTPATH}\""
+    cd "${SCRIPTPATH}/compose/" || fatal "Failed to change directory.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
+    docker-compose config || fatal "Failed to validate ${SCRIPTPATH}/compose/docker-compose.yml file.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
+    cd "${SCRIPTPATH}" || fatal "Failed to change directory.\nFailing command: ${F[C]}${PREVIOUS_COMMAND}"
     run_script 'docker_compose'
 }

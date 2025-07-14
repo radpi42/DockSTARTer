@@ -128,7 +128,6 @@ nav:
       - apps/azuracast.md
       - apps/bazarr.md
       - apps/beets.md
-      - apps/bitwarden.md
       - apps/booksonicair.md
       - apps/bookstack.md
       - apps/calibre.md
@@ -274,6 +273,7 @@ nav:
       - apps/unpackerr.md
       - apps/uptimekuma.md
       - apps/varken.md
+      - appd/vaultwarden.md
       - apps/vsftpd.md
       - apps/watchtower.md
       - apps/wireguard.md
